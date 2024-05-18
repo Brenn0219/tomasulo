@@ -30,6 +30,4 @@ typedef union Instr {
 
 void parse_instr(char *str, Instr *instr);
 
-void print_instr(Instr *instr);
-
 #endif

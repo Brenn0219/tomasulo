@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "reorder_buffer.h"
+#include "instruction.h"
+#include "print.h"
 
 int main() {
     char str[] = "MULT,X0,X1,X2";
