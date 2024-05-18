@@ -3,6 +3,7 @@ CFLAGS = -Wall -o
 CPPFLAGS = -Iinclude
 
 SRCDIR = src
+DATADIR = data
 INCLUDEDIR = include
 
 TARGET = run
@@ -16,6 +17,9 @@ $(TARGET): $(OBJECTS)
 
 %.o: $(SRCDIR)/%.c
 	$(CC) -c $(CPPFLAGS) -o $@ $<
+
+copy_data:
+	cp $(DATADIR)/in.txt 
 
 clean:
 	rm -f $(TARGET) $(OBJECTS)
