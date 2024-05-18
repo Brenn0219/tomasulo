@@ -6,6 +6,7 @@ int main() {
     Instr instr;
 
     parse_instr(str, &instr);
+    print_instr(&instr);
 
     return 0;
 }
