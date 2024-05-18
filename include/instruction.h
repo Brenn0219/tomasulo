@@ -25,6 +25,5 @@ typedef struct {
 } Instr;
 
 void parse_instr(char *str, Instr *instr);
-void parse_reg(Reg *reg, char *str);
 
 #endif

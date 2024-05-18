@@ -3,9 +3,7 @@
 #include "instruction.h"
 #include "type.h"
 
-void parse_reg(Reg *reg, char *str) {
-    printf("str: %s\n", str);
-
+static void parse_reg(Reg *reg, char *str) {
     if (!strcmp(str, "X0")) 
         *reg = X0;
     else if (!strcmp(str, "X1"))
