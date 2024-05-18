@@ -58,3 +58,35 @@ void print_instr(Instr *instr) {
 
     printf("\n");
 }
+
+void print_status(Status stt) {
+    printf("status: ");
+
+    switch (stt) {
+        case WAIT:
+            printf("WAIT\n");
+            break;
+        
+        case DISPATCH:
+            printf("DISPATCH\n");
+            break;
+
+        case EXECUTION:
+            printf("EXECUTION\n");
+            break;
+
+        case WRITEBACK:
+            printf("WRITEBACK\n");
+            break;
+            
+        default:
+            printf("COMMIT\n");
+            break;
+    }
+}
+
+void print_buffer(Buffer *bff) {
+    printf("id: %d busy: %s \n", bff->id, (bff->busy ? "true" : "false"));
+    print_instr(&bff->istr);
+    print_status(bff->stt);
+}
