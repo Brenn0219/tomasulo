@@ -1,10 +1,6 @@
 #ifndef INTRUCTION_H
 #define INTRUCTION_H
 
-#include <stdlib.h>
-#include <string.h>
-#include "type.h"
-
 typedef enum {
     ADD,
     SUB,
@@ -21,7 +17,7 @@ typedef enum {
     X6
 } Reg;
 
-typedef union Instr {
+typedef struct {
     InstrType type;
     Reg dest;
     Reg op1;
@@ -29,5 +25,6 @@ typedef union Instr {
 } Instr;
 
 void parse_instr(char *str, Instr *instr);
+void parse_reg(Reg *reg, char *str);
 
 #endif
