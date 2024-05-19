@@ -5,8 +5,8 @@
 
 #include "reordering.h"
 
-void print_instr(Instr *instr);
-void print_reg(Reg reg);
+void print_instruction(Instr *i);
+void print_reg(Reg r);
 void print_status(Status stt);
 void print_buffer(Buffer *bff);
 

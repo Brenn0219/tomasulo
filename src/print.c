@@ -1,39 +1,40 @@
+#include <stdio.h>
 #include "print.h"
 
-void print_reg(Reg reg) {
-    switch (reg) {
-        case X0:
-            printf("X0 ");
+void print_reg(Reg r) {
+    switch (r.id) {
+        case F0:
+            printf("{F0, %d} ", r.value);
             break;
         
-        case X1:
-            printf("X1 ");
+        case F1:
+            printf("{F1, %d} ", r.value);
             break;
     
-        case X2:
-            printf("X2 ");
+        case F2:
+            printf("{F2, %d} ", r.value);
             break;
 
-        case X3:
-            printf("X3 ");
+        case F3:
+            printf("{F3, %d} ", r.value);
             break;
 
-        case X4:
-            printf("X4 ");
+        case F4:
+            printf("{F4, %d} ", r.value);
             break;
 
-        case X5:
-            printf("X5 ");
+        case F5:
+            printf("{F5, %d} ", r.value);
             break;
 
         default:
-            printf("X6 ");
+            printf("{F6, %d} ", r.value);
             break;
     }
 }
 
-void print_instr(Instr *instr) {
-    switch (instr->type) {
+void print_instruction(Instr *i) {
+    switch (i->type) {
         case ADD:
             printf("type: ADD ");
             break;
@@ -48,13 +49,13 @@ void print_instr(Instr *instr) {
     }
 
     printf("dest: ");
-    print_reg(instr->dest);
+    print_reg(i->dest);
 
     printf("op1: ");
-    print_reg(instr->op1);
+    print_reg(i->op1);
 
     printf("op2: ");
-    print_reg(instr->op2);
+    print_reg(i->op2);
 
     printf("\n");
 }
@@ -87,6 +88,7 @@ void print_status(Status stt) {
 
 void print_buffer(Buffer *bff) {
     printf("id: %d busy: %s \n", bff->id, (bff->busy ? "true" : "false"));
-    print_instr(&bff->istr);
+    print_instruction(&bff->ist);
     print_status(bff->stt);
+    printf("\n");
 }
