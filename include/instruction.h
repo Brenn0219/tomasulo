@@ -1,21 +1,13 @@
 #ifndef INTRUCTION_H
 #define INTRUCTION_H
 
+#include "registrar.h"
+
 typedef enum {
     ADD,
     SUB,
     MULT,
 } InstrType;
-
-typedef enum {
-    X0,
-    X1,
-    X2,
-    X3,
-    X4,
-    X5,
-    X6
-} Reg;
 
 typedef struct {
     InstrType type;
@@ -24,6 +16,7 @@ typedef struct {
     Reg op2;
 } Instr;
 
-void parse_instr(char *str, Instr *instr);
+void instruction_init(Instr *i);
+void instruction_parse(Instr *i, char *str);
 
 #endif

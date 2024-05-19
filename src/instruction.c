@@ -1,43 +1,53 @@
 #include <string.h>
-#include <stdlib.h>
 #include "instruction.h"
-#include "type.h"
 
-static void parse_reg(Reg *reg, char *str) {
-    if (!strcmp(str, "X0")) 
-        *reg = X0;
-    else if (!strcmp(str, "X1"))
-        *reg = X1;
-    else if (!strcmp(str, "X2"))
-        *reg = X2;
-    else if (!strcmp(str, "X3"))
-        *reg = X3;
-    else if (!strcmp(str, "X4"))
-        *reg = X4;
-    else if (!strcmp(str, "X5"))
-        *reg = X5;
+#include <stdio.h>
+
+#define DELIMITER ","
+
+static void reg_parse(Reg *reg, char *str) {
+    if (!strcmp(str, "F0")) 
+        reg->id = F0;
+    else if (!strcmp(str, "F1"))
+        reg->id = F1;
+    else if (!strcmp(str, "F2"))
+        reg->id = F2;
+    else if (!strcmp(str, "F3"))
+        reg->id = F3;
+    else if (!strcmp(str, "F4"))
+        reg->id = F4;
+    else if (!strcmp(str, "F5"))
+        reg->id = F5;
     else
-        *reg = X6;
+        reg->id = F6;
 }
 
-void parse_instr(char *str, Instr *istr) {
-    char delimiter[] = ","; 
-
-    char *parse = strtok(str, delimiter);
-
-    if (!strcmp(parse, "MULT")) 
-        istr->type = MULT;
-    else if (!strcmp(parse, "ADD"))
-        istr->type = ADD;
-    else 
-        istr->type = SUB;
+static void instr_parse_type(Instr *i, char *token) {
     
-    parse = strtok(NULL, delimiter);
-    parse_reg(&istr->dest, parse);
+    if (!strcmp(token, "MULT")) 
+        i->type = MULT;
+    else if (!strcmp(token, "ADD"))
+        i->type = ADD;
+    else 
+        i->type = SUB;
+}
 
-    parse = strtok(NULL, delimiter);
-    parse_reg(&istr->op1, parse);
+void instruction_parse(Instr *i, char *str) {
+    char *token = strtok(str, DELIMITER);
+    instr_parse_type(i, token);
+    
+    token = strtok(NULL, DELIMITER);
+    reg_parse(&i->dest, token);
 
-    parse = strtok(NULL, delimiter);
-    parse_reg(&istr->op2, parse);
+    token = strtok(NULL, DELIMITER);
+    reg_parse(&i->op1, token);
+
+    token = strtok(NULL, DELIMITER);
+    reg_parse(&i->op2, token);
+}
+
+void instruction_init(Instr *i) {
+    reg_init(&i->dest);
+    reg_init(&i->op1);
+    reg_init(&i->op2);
 }

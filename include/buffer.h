@@ -1,10 +1,12 @@
 #ifndef BUFFER_H
 #define BUFFER_H
 
+#include <stdbool.h> 
 #include "instruction.h"
-#include "type.h"
 
-typedef enum Status {
+#define u8 uint8_t
+
+typedef enum {
     WAIT,
     DISPATCH,
     EXECUTION,
@@ -12,11 +14,12 @@ typedef enum Status {
     COMMIT
 } Status;
 
-typedef struct Buffer {
+typedef struct {
     u8 id;
     bool busy;
-    Instr istr;
+    Instr ist;
     Status stt;
+    i64 value;
 } Buffer;
 
 #endif
