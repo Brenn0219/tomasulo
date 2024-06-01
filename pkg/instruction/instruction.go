@@ -1,8 +1,6 @@
 package instruction
 
-import (
-	"tomasulo/pkg/registrar"
-)
+import "tomasulo/pkg/registrar"
 
 type InstructionType uint8
 
