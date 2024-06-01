@@ -14,3 +14,8 @@ type Station struct {
 	Qk            uint
 	InstructionId uint
 }
+
+type RegistrarStatus struct {
+	registrar.Registrar
+	Busy bool
+}
