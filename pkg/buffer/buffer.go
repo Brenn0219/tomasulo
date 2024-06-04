@@ -1,6 +1,8 @@
 package buffer
 
-import "tomasulo/pkg/instruction"
+import (
+	"tomasulo/pkg/instruction"
+)
 
 type Buffer struct {
 	Id   uint
@@ -11,3 +13,5 @@ type Buffer struct {
 	WriteBack uint
 	Commit    uint
 }
+
+type ReorderBuffer []Buffer
