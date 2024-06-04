@@ -19,3 +19,5 @@ type RegistrarStatus struct {
 	registrar.Registrar
 	Busy bool
 }
+
+type ReservationStations []Station
