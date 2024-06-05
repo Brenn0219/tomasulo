@@ -11,6 +11,7 @@ const (
 	DIV
 	LDR
 	STD
+	InvalidType
 )
 
 type Instruction struct {
